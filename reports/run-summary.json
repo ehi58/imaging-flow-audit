@@ -1,0 +1,564 @@
+{
+ "seed": 20261101,
+ "months": 24,
+ "window": [
+  "2024-10-01",
+  "2026-10-31"
+ ],
+ "clean": {
+  "counts": {
+   "providers": 57,
+   "patients": 2000,
+   "coverage": 11372,
+   "trips": 3887,
+   "orders": 10195,
+   "performed": 10108,
+   "reports": 10108,
+   "studies": 10108,
+   "instances": 19259,
+   "claim_lines": 30324,
+   "planted": 0,
+   "cascade": 0
+  },
+  "validation": {
+   "hl7_files": 44606,
+   "hapi": {
+    "files": 44606,
+    "failed": 0,
+    "first_failures": []
+   },
+   "hl7apy_strict": {
+    "files": 1116,
+    "of": 22303,
+    "every_nth": 20,
+    "failed": 0
+   }
+  },
+  "flags": {
+   "E01": 0,
+   "E02": 0,
+   "E03": 0,
+   "E04": 0,
+   "E05": 0,
+   "E06": 0,
+   "E07": 0,
+   "E08": 0,
+   "E09": 0,
+   "E11": 0,
+   "E12": 0
+  },
+  "vocab_controls": {
+   "procedures_all_occur": true,
+   "procedures_all_in_vocabulary": true,
+   "body_parts_in_vocabulary": true,
+   "payers_all_occur": true
+  }
+ },
+ "injected": {
+  "counts": {
+   "providers": 57,
+   "patients": 2000,
+   "coverage": 11407,
+   "trips": 3887,
+   "orders": 10195,
+   "performed": 10108,
+   "reports": 10083,
+   "studies": 10188,
+   "instances": 19424,
+   "claim_lines": 30349,
+   "planted": 1128,
+   "cascade": 3720
+  },
+  "validation": {
+   "hl7_files": 44556,
+   "hapi": {
+    "files": 44556,
+    "failed": 0,
+    "first_failures": []
+   },
+   "hl7apy_strict": {
+    "files": 1114,
+    "of": 22278,
+    "every_nth": 20,
+    "failed": 0
+   }
+  },
+  "flags": {
+   "E01": 153,
+   "E02": 44,
+   "E03": 99,
+   "E04": 79,
+   "E05": 1218,
+   "E06": 859,
+   "E07": 297,
+   "E08": 152,
+   "E09": 101,
+   "E11": 138,
+   "E12": 100
+  },
+  "vocab_controls": {
+   "procedures_all_occur": true,
+   "procedures_all_in_vocabulary": true,
+   "body_parts_in_vocabulary": false,
+   "payers_all_occur": true
+  }
+ },
+ "recall": {
+  "E01": {
+   "planted": 114,
+   "caught": 114,
+   "recall": 1.0,
+   "recall_non_holdout": 1.0,
+   "holdout_planted": 38,
+   "holdout_caught": 38,
+   "wilson_low": 0.9674003068525885,
+   "wilson_high": 1.0,
+   "flagged": 153,
+   "flags_cascade": 0,
+   "flags_cross": 1,
+   "flags_unexplained": 0,
+   "flags_not_planted": 1
+  },
+  "E02": {
+   "planted": 30,
+   "caught": 30,
+   "recall": 1.0,
+   "recall_non_holdout": 1.0,
+   "holdout_planted": 9,
+   "holdout_caught": 0,
+   "wilson_low": 0.8864829086095221,
+   "wilson_high": 1.0,
+   "flagged": 44,
+   "flags_cascade": 0,
+   "flags_cross": 14,
+   "flags_unexplained": 0,
+   "flags_not_planted": 14
+  },
+  "E03": {
+   "planted": 75,
+   "caught": 75,
+   "recall": 1.0,
+   "recall_non_holdout": 1.0,
+   "holdout_planted": 24,
+   "holdout_caught": 24,
+   "wilson_low": 0.9512744540953,
+   "wilson_high": 1.0,
+   "flagged": 99,
+   "flags_cascade": 0,
+   "flags_cross": 0,
+   "flags_unexplained": 0,
+   "flags_not_planted": 0
+  },
+  "E04": {
+   "planted": 60,
+   "caught": 59,
+   "recall": 0.9833333333333333,
+   "recall_non_holdout": 0.9833333333333333,
+   "holdout_planted": 20,
+   "holdout_caught": 20,
+   "wilson_low": 0.9114466177322051,
+   "wilson_high": 0.9970519161391262,
+   "flagged": 79,
+   "flags_cascade": 0,
+   "flags_cross": 0,
+   "flags_unexplained": 0,
+   "flags_not_planted": 0
+  },
+  "E05": {
+   "planted": 45,
+   "caught": 45,
+   "recall": 1.0,
+   "recall_non_holdout": 1.0,
+   "holdout_planted": 15,
+   "holdout_caught": 15,
+   "wilson_low": 0.9213457380593594,
+   "wilson_high": 1.0,
+   "flagged": 1218,
+   "flags_cascade": 1133,
+   "flags_cross": 25,
+   "flags_unexplained": 0,
+   "flags_not_planted": 1158
+  },
+  "E06": {
+   "planted": 107,
+   "caught": 103,
+   "recall": 0.9626168224299065,
+   "recall_non_holdout": 0.9626168224299065,
+   "holdout_planted": 36,
+   "holdout_caught": 36,
+   "wilson_low": 0.9077981271048194,
+   "wilson_high": 0.9853683374716573,
+   "flagged": 859,
+   "flags_cascade": 669,
+   "flags_cross": 51,
+   "flags_unexplained": 0,
+   "flags_not_planted": 720
+  },
+  "E07": {
+   "planted": 75,
+   "caught": 75,
+   "recall": 1.0,
+   "recall_non_holdout": 1.0,
+   "holdout_planted": 25,
+   "holdout_caught": 24,
+   "wilson_low": 0.9512744540953,
+   "wilson_high": 1.0,
+   "flagged": 297,
+   "flags_cascade": 198,
+   "flags_cross": 0,
+   "flags_unexplained": 0,
+   "flags_not_planted": 198
+  },
+  "E08": {
+   "planted": 114,
+   "caught": 114,
+   "recall": 1.0,
+   "recall_non_holdout": 1.0,
+   "holdout_planted": 38,
+   "holdout_caught": 38,
+   "wilson_low": 0.9674003068525885,
+   "wilson_high": 1.0,
+   "flagged": 152,
+   "flags_cascade": 0,
+   "flags_cross": 0,
+   "flags_unexplained": 0,
+   "flags_not_planted": 0
+  },
+  "E09": {
+   "planted": 76,
+   "caught": 76,
+   "recall": 1.0,
+   "recall_non_holdout": 1.0,
+   "holdout_planted": 25,
+   "holdout_caught": 25,
+   "wilson_low": 0.9518847317689024,
+   "wilson_high": 0.9999999999999999,
+   "flagged": 101,
+   "flags_cascade": 0,
+   "flags_cross": 0,
+   "flags_unexplained": 0,
+   "flags_not_planted": 0
+  },
+  "E11": {
+   "planted": 68,
+   "caught": 67,
+   "recall": 0.9852941176470589,
+   "recall_non_holdout": 0.9852941176470589,
+   "holdout_planted": 34,
+   "holdout_caught": 33,
+   "wilson_low": 0.9212883963845384,
+   "wilson_high": 0.9973993833976493,
+   "flagged": 138,
+   "flags_cascade": 36,
+   "flags_cross": 2,
+   "flags_unexplained": 0,
+   "flags_not_planted": 38
+  },
+  "E12": {
+   "planted": 75,
+   "caught": 75,
+   "recall": 1.0,
+   "recall_non_holdout": 1.0,
+   "holdout_planted": 25,
+   "holdout_caught": 25,
+   "wilson_low": 0.9512744540953,
+   "wilson_high": 1.0,
+   "flagged": 100,
+   "flags_cascade": 0,
+   "flags_cross": 0,
+   "flags_unexplained": 0,
+   "flags_not_planted": 0
+  }
+ },
+ "recall_variants": {
+  "E01": {
+   "transposed_digits": {
+    "planted": 38,
+    "caught": 38,
+    "holdout": false,
+    "recall": 1.0
+   },
+   "prefix_dropped": {
+    "planted": 38,
+    "caught": 38,
+    "holdout": false,
+    "recall": 1.0
+   },
+   "other_same_day_accession": {
+    "planted": 38,
+    "caught": 38,
+    "holdout": false,
+    "recall": 1.0
+   },
+   "leading_zero_dropped": {
+    "planted": 38,
+    "caught": 38,
+    "holdout": true,
+    "recall": 1.0
+   }
+  },
+  "E02": {
+   "lr_swapped": {
+    "planted": 10,
+    "caught": 10,
+    "holdout": false,
+    "recall": 1.0
+   },
+   "image_laterality_blank": {
+    "planted": 10,
+    "caught": 10,
+    "holdout": false,
+    "recall": 1.0
+   },
+   "bilateral_on_single": {
+    "planted": 10,
+    "caught": 10,
+    "holdout": false,
+    "recall": 1.0
+   },
+   "laterality_tag_only_wrong": {
+    "planted": 9,
+    "caught": 0,
+    "holdout": true,
+    "recall": 0.0
+   }
+  },
+  "E03": {
+   "tag_absent": {
+    "planted": 25,
+    "caught": 25,
+    "holdout": false,
+    "recall": 1.0
+   },
+   "tag_empty": {
+    "planted": 25,
+    "caught": 25,
+    "holdout": false,
+    "recall": 1.0
+   },
+   "undefined_term": {
+    "planted": 25,
+    "caught": 25,
+    "holdout": false,
+    "recall": 1.0
+   },
+   "lowercase_term": {
+    "planted": 24,
+    "caught": 24,
+    "holdout": true,
+    "recall": 1.0
+   }
+  },
+  "E04": {
+   "never_ordered_accession": {
+    "planted": 20,
+    "caught": 20,
+    "holdout": false,
+    "recall": 1.0
+   },
+   "blank_accession": {
+    "planted": 20,
+    "caught": 19,
+    "holdout": false,
+    "recall": 0.95
+   },
+   "mrn_without_orders": {
+    "planted": 20,
+    "caught": 20,
+    "holdout": false,
+    "recall": 1.0
+   },
+   "cancelled_order_accession": {
+    "planted": 20,
+    "caught": 20,
+    "holdout": true,
+    "recall": 1.0
+   }
+  },
+  "E05": {
+   "wrong_payer_prefix": {
+    "planted": 15,
+    "caught": 15,
+    "holdout": false,
+    "recall": 1.0
+   },
+   "failed_check_digit": {
+    "planted": 15,
+    "caught": 15,
+    "holdout": false,
+    "recall": 1.0
+   },
+   "other_members_id": {
+    "planted": 15,
+    "caught": 15,
+    "holdout": false,
+    "recall": 1.0
+   },
+   "truncated_id": {
+    "planted": 15,
+    "caught": 15,
+    "holdout": true,
+    "recall": 1.0
+   }
+  },
+  "E06": {
+   "after_coverage_end": {
+    "planted": 34,
+    "caught": 34,
+    "holdout": false,
+    "recall": 1.0
+   },
+   "before_coverage_start": {
+    "planted": 37,
+    "caught": 36,
+    "holdout": false,
+    "recall": 0.972972972972973
+   },
+   "end_day_before_service": {
+    "planted": 36,
+    "caught": 33,
+    "holdout": false,
+    "recall": 0.9166666666666666
+   },
+   "gap_between_periods": {
+    "planted": 36,
+    "caught": 36,
+    "holdout": true,
+    "recall": 1.0
+   }
+  },
+  "E07": {
+   "ffs_billed_while_ma": {
+    "planted": 25,
+    "caught": 25,
+    "holdout": false,
+    "recall": 1.0
+   },
+   "medicaid_primary_for_dual": {
+    "planted": 25,
+    "caught": 25,
+    "holdout": false,
+    "recall": 1.0
+   },
+   "prior_payer_after_switch": {
+    "planted": 25,
+    "caught": 25,
+    "holdout": false,
+    "recall": 1.0
+   },
+   "secondary_billed_as_primary": {
+    "planted": 25,
+    "caught": 24,
+    "holdout": true,
+    "recall": 0.96
+   }
+  },
+  "E08": {
+   "blank": {
+    "planted": 38,
+    "caught": 38,
+    "holdout": false,
+    "recall": 1.0
+   },
+   "failed_check_digit": {
+    "planted": 38,
+    "caught": 38,
+    "holdout": false,
+    "recall": 1.0
+   },
+   "organization_npi": {
+    "planted": 38,
+    "caught": 38,
+    "holdout": false,
+    "recall": 1.0
+   },
+   "unregistered_valid_npi": {
+    "planted": 38,
+    "caught": 38,
+    "holdout": true,
+    "recall": 1.0
+   }
+  },
+  "E09": {
+   "beyond_sla": {
+    "planted": 26,
+    "caught": 26,
+    "holdout": false,
+    "recall": 1.0
+   },
+   "report_before_exam": {
+    "planted": 25,
+    "caught": 25,
+    "holdout": false,
+    "recall": 1.0
+   },
+   "no_report": {
+    "planted": 25,
+    "caught": 25,
+    "holdout": false,
+    "recall": 1.0
+   },
+   "report_at_sla_plus_one_minute": {
+    "planted": 25,
+    "caught": 25,
+    "holdout": true,
+    "recall": 1.0
+   }
+  },
+  "E11": {
+   "two_view_billed_one_image": {
+    "planted": 34,
+    "caught": 34,
+    "holdout": false,
+    "recall": 1.0
+   },
+   "single_view_billed_two_images": {
+    "planted": 34,
+    "caught": 33,
+    "holdout": false,
+    "recall": 0.9705882352941176
+   },
+   "three_views_billed_two_images": {
+    "planted": 34,
+    "caught": 33,
+    "holdout": true,
+    "recall": 0.9705882352941176
+   }
+  },
+  "E12": {
+   "r0075_single_patient": {
+    "planted": 25,
+    "caught": 25,
+    "holdout": false,
+    "recall": 1.0
+   },
+   "r0070_multi_patient": {
+    "planted": 25,
+    "caught": 25,
+    "holdout": false,
+    "recall": 1.0
+   },
+   "transport_without_exam": {
+    "planted": 25,
+    "caught": 25,
+    "holdout": false,
+    "recall": 1.0
+   },
+   "modifier_count_mismatch": {
+    "planted": 25,
+    "caught": 25,
+    "holdout": true,
+    "recall": 1.0
+   }
+  }
+ },
+ "timings_s": {
+  "clean_generate_s": 859.2,
+  "clean_extract_s": 769.8,
+  "clean_audit_s": 16.5,
+  "injected_generate_s": 1088.2,
+  "injected_extract_s": 641.7,
+  "injected_audit_s": 12.0,
+  "score_s": 0.2
+ }
+}

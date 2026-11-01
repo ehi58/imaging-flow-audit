@@ -1,0 +1,431 @@
+{
+ "synthetic": true,
+ "note": "Everything here is synthetic: a fictitious resident and facility, synthetic NPIs absent from the NPI Registry, generic payers, a fixed report template. No patient data.",
+ "repo": "https://github.com/ehi58/imaging-flow-audit",
+ "flow": [
+  {
+   "step": "Registration",
+   "carries": "ADT^A04: who the resident is and what coverage they hold."
+  },
+  {
+   "step": "Order",
+   "carries": "OMI^O23 (v2.8) or ORM^O01 (v2.5.1): the exam, its side, the accession, the ordering practitioner and the reason."
+  },
+  {
+   "step": "Image",
+   "carries": "DICOM DX: the header repeats the accession, the patient, the body part and the side."
+  },
+  {
+   "step": "Report",
+   "carries": "ORU^R01: exam time, report time, final status, the reader."
+  },
+  {
+   "step": "FHIR",
+   "carries": "ServiceRequest, ImagingStudy and DiagnosticReport as R4 resources, sharing the accession."
+  },
+  {
+   "step": "Claim",
+   "carries": "Service lines: the exam's technical component, set-up, and the transport fee prorated by patients at the stop."
+  }
+ ],
+ "samples": {
+  "adt": {
+   "title": "ADT^A04 (v2.8, structure ADT_A01)",
+   "er7": "MSH|^~\\&|RIS|HARBORLINE|PACS|HARBORLINE|20250304081600||ADT^A04^ADT_A01|ADT0000001|P|2.8\nEVN||20250304081600\nPID|1||MRN1000001^^^HARBORLINE^MR||ASHFORD^AVERY||19420305|F\nPV1|1|O|F01^^^HARBORLINE|||||||||||||||||||||||||||||||||||||||||20240115100000\nIN1|1|MAA^Medicare Advantage Plan A^L|MAA|Medicare Advantage Plan A||||||||20241101|20251031||MEDICARE_ADVANTAGE||SEL|||||1||||||||||||||MAA12345676\nIN1|2|CPA^Commercial Plan A^L|CPA|Commercial Plan A||||||||20241101|20251031||COMMERCIAL||SEL|||||2||||||||||||||CPA123456781",
+   "highlights": [
+    {
+     "field": "PID-3",
+     "why": "the MRN the review joins everything on"
+    },
+    {
+     "field": "IN1-2",
+     "why": "the payer"
+    },
+    {
+     "field": "IN1-12",
+     "why": "coverage start"
+    },
+    {
+     "field": "IN1-13",
+     "why": "coverage end"
+    },
+    {
+     "field": "IN1-22",
+     "why": "primary or secondary"
+    },
+    {
+     "field": "IN1-36",
+     "why": "the member ID"
+    }
+   ]
+  },
+  "order": {
+   "title": "OMI^O23 imaging order (v2.8)",
+   "er7": "MSH|^~\\&|RIS|HARBORLINE|PACS|HARBORLINE|20250304081600||OMI^O23^OMI_O23|ORD0000001|P|2.8\nPID|1||MRN1000001^^^HARBORLINE^MR||ASHFORD^AVERY||19420305|F\nPV1|1|O|F01^^^HARBORLINE\nORC|NW|PLC0000001^RIS|FIL0000001^RIS||SC||||20250304081500\nPRT|PLC0000001-OP^RIS|AD||OP^Ordering Provider^HL70912|1234567893^BARLOW^BLAKE^^^^^^NPI&2.16.840.1.113883.4.6&ISO^^^^NPI\nTQ1|1||||||20250304100000\nOBR|1|PLC0000001^RIS|FIL0000001^RIS|73562^Radiologic examination knee 3 views LT^C4|||||||||||||||||||||||||||^Fall from bed with knee pain and swelling\nIPC|ACC00000001^RIS|FIL0000001-RP1^RIS|1.2.826.0.1.3680043.8.498.10000000000000000000000000000001^RIS|FIL0000001-SPS1^RIS|DX^Digital Radiography^DCM",
+   "highlights": [
+    {
+     "field": "ORC-1",
+     "why": "new or cancelled"
+    },
+    {
+     "field": "ORC-2",
+     "why": "placer order number, joined to the report"
+    },
+    {
+     "field": "OBR-4",
+     "why": "the procedure and its side"
+    },
+    {
+     "field": "OBR-31",
+     "why": "the statement of the patient's condition"
+    },
+    {
+     "field": "PRT-5",
+     "why": "the ordering NPI, matched to the claim"
+    },
+    {
+     "field": "IPC-1",
+     "why": "the accession, matched to the image and the claim"
+    }
+   ]
+  },
+  "report": {
+   "title": "ORU^R01 report (v2.8)",
+   "er7": "MSH|^~\\&|PACS|HARBORLINE|RIS|HARBORLINE|20250304144000||ORU^R01^ORU_R01|RPT0000001|P|2.8\nPID|1||MRN1000001^^^HARBORLINE^MR||ASHFORD^AVERY||19420305|F\nORC|NW|PLC0000001^RIS|FIL0000001^RIS||CM||||20250304081500\nOBR|1|PLC0000001^RIS|FIL0000001^RIS|73562^Radiologic examination knee 3 views LT^C4|||20250304101200|||||||||||||||20250304144000||RAD|F\nPRT|ACC00000001-PP^PACS|AD||PP^Primary Performing Provider^HL70912|2522787128^CALDWELL^CAMERON^^^^^^NPI&2.16.840.1.113883.4.6&ISO^^^^NPI\nOBX|1|TX|18748-4^Diagnostic imaging study^LN||SYNTHETIC - NOT A READ||||||F|||20250304101200",
+   "highlights": [
+    {
+     "field": "OBR-7",
+     "why": "when the exam was done"
+    },
+    {
+     "field": "OBR-22",
+     "why": "when the report was signed"
+    },
+    {
+     "field": "OBR-25",
+     "why": "final"
+    },
+    {
+     "field": "PRT-5",
+     "why": "the reading radiologist"
+    },
+    {
+     "field": "OBX-5",
+     "why": "the report body, always the synthetic template"
+    }
+   ]
+  }
+ },
+ "dicom_excerpt": [
+  {
+   "tag": "(0008,0050)",
+   "keyword": "AccessionNumber",
+   "value": "ACC00000001",
+   "why": "matched to the order (E01, E04)"
+  },
+  {
+   "tag": "(0010,0020)",
+   "keyword": "PatientID",
+   "value": "MRN1000001",
+   "why": "the MRN"
+  },
+  {
+   "tag": "(0010,0010)",
+   "keyword": "PatientName",
+   "value": "ASHFORD^AVERY",
+   "why": "must match registration"
+  },
+  {
+   "tag": "(0020,000D)",
+   "keyword": "StudyInstanceUID",
+   "value": "1.2.826.0.1.3680043.8.498.10000000000000000000000000000001",
+   "why": "the study's identity"
+  },
+  {
+   "tag": "(0008,0020)",
+   "keyword": "StudyDate",
+   "value": "20250304",
+   "why": "the date of service"
+  },
+  {
+   "tag": "(0008,0060)",
+   "keyword": "Modality",
+   "value": "DX",
+   "why": "DX"
+  },
+  {
+   "tag": "(0018,0015)",
+   "keyword": "BodyPartExamined",
+   "value": "KNEE",
+   "why": "must be a defined term (E03)"
+  },
+  {
+   "tag": "(0020,0060)",
+   "keyword": "Laterality",
+   "value": "L",
+   "why": "fallback side (E02)"
+  },
+  {
+   "tag": "(0020,0062)",
+   "keyword": "ImageLaterality",
+   "value": "L",
+   "why": "the side the review compares (E02)"
+  },
+  {
+   "tag": "(0018,5101)",
+   "keyword": "ViewPosition",
+   "value": "AP",
+   "why": "one per instance; the count feeds E11"
+  },
+  {
+   "tag": "(0008,0090)",
+   "keyword": "ReferringPhysicianName",
+   "value": "BARLOW^BLAKE",
+   "why": "the orderer"
+  },
+  {
+   "tag": "(0008,0070)",
+   "keyword": "Manufacturer",
+   "value": "SYNTHETIC",
+   "why": "SYNTHETIC"
+  }
+ ],
+ "checks": [
+  {
+   "id": "E01",
+   "name": "The image carries a different accession number from the order",
+   "catches": "A typo or a swapped study number between the order and the image.",
+   "costs": "The claim cannot be tied to a valid order, so it is deniable on review."
+  },
+  {
+   "id": "E02",
+   "name": "The image's side disagrees with the order",
+   "catches": "A left knee ordered, a right knee in the header, or no side at all.",
+   "costs": "The LT/RT modifier on the claim no longer matches the record of what was done."
+  },
+  {
+   "id": "E03",
+   "name": "The body part is missing or not a defined term",
+   "catches": "An empty or non-standard BodyPartExamined tag.",
+   "costs": "The exam cannot be matched to its procedure code in a documentation review."
+  },
+  {
+   "id": "E04",
+   "name": "An image with no order",
+   "catches": "A study that no order explains.",
+   "costs": "Work that cannot be billed, or a billed exam with no order behind it."
+  },
+  {
+   "id": "E05",
+   "name": "The member ID is wrong",
+   "catches": "A wrong payer prefix, a failed check digit, another patient's number.",
+   "costs": "The payer rejects the claim."
+  },
+  {
+   "id": "E06",
+   "name": "Coverage was not in force on the date of service",
+   "catches": "A claim sent to a plan whose period ended before, or started after, the exam.",
+   "costs": "The payer denies it; the time to rebill is the cost."
+  },
+  {
+   "id": "E07",
+   "name": "The wrong payer",
+   "catches": "Fee-for-service billed for an Advantage member; Medicaid billed first for a dual-eligible.",
+   "costs": "A denial, and sometimes a timely-filing loss on the correct payer."
+  },
+  {
+   "id": "E08",
+   "name": "The ordering NPI is missing or invalid",
+   "catches": "A blank, a failed check digit, an organization where an individual is required.",
+   "costs": "Medicare requires a valid ordering practitioner on the claim."
+  },
+  {
+   "id": "E09",
+   "name": "The report is late, early or missing",
+   "catches": "Turnaround past the service level, a report time before the exam, no report at all.",
+   "costs": "An exam with no final report is not complete; a late one is a service failure."
+  },
+  {
+   "id": "E11",
+   "name": "Views billed differ from views taken",
+   "catches": "A two-view code on a one-image study, or the reverse.",
+   "costs": "Over-coding is an overpayment to return; under-coding is money left on the table."
+  },
+  {
+   "id": "E12",
+   "name": "The transport line disagrees with the stop",
+   "catches": "A solo-trip fee at a shared stop, a shared-stop code for one patient, transport on a day with no exam.",
+   "costs": "The transport fee is prorated by patients served; the wrong code pays the wrong amount."
+  }
+ ],
+ "recall": {
+  "seed": 20261101,
+  "months": 24,
+  "window": [
+   "2024-10-01",
+   "2026-10-31"
+  ],
+  "performed_exams": 10108,
+  "planted": 1128,
+  "cascade": 3720,
+  "clean_flags": {
+   "E01": 0,
+   "E02": 0,
+   "E03": 0,
+   "E04": 0,
+   "E05": 0,
+   "E06": 0,
+   "E07": 0,
+   "E08": 0,
+   "E09": 0,
+   "E11": 0,
+   "E12": 0
+  },
+  "rows": [
+   {
+    "rule": "E01",
+    "planted": 114,
+    "caught": 114,
+    "recall": 1.0,
+    "interval_low": 0.967,
+    "interval_high": 1.0,
+    "holdout_planted": 38,
+    "holdout_caught": 38,
+    "flags_cascade": 0,
+    "flags_cross": 1,
+    "flags_unexplained": 0
+   },
+   {
+    "rule": "E02",
+    "planted": 30,
+    "caught": 30,
+    "recall": 1.0,
+    "interval_low": 0.886,
+    "interval_high": 1.0,
+    "holdout_planted": 9,
+    "holdout_caught": 0,
+    "flags_cascade": 0,
+    "flags_cross": 14,
+    "flags_unexplained": 0
+   },
+   {
+    "rule": "E03",
+    "planted": 75,
+    "caught": 75,
+    "recall": 1.0,
+    "interval_low": 0.951,
+    "interval_high": 1.0,
+    "holdout_planted": 24,
+    "holdout_caught": 24,
+    "flags_cascade": 0,
+    "flags_cross": 0,
+    "flags_unexplained": 0
+   },
+   {
+    "rule": "E04",
+    "planted": 60,
+    "caught": 59,
+    "recall": 0.983,
+    "interval_low": 0.911,
+    "interval_high": 0.997,
+    "holdout_planted": 20,
+    "holdout_caught": 20,
+    "flags_cascade": 0,
+    "flags_cross": 0,
+    "flags_unexplained": 0
+   },
+   {
+    "rule": "E05",
+    "planted": 45,
+    "caught": 45,
+    "recall": 1.0,
+    "interval_low": 0.921,
+    "interval_high": 1.0,
+    "holdout_planted": 15,
+    "holdout_caught": 15,
+    "flags_cascade": 1133,
+    "flags_cross": 25,
+    "flags_unexplained": 0
+   },
+   {
+    "rule": "E06",
+    "planted": 107,
+    "caught": 103,
+    "recall": 0.963,
+    "interval_low": 0.908,
+    "interval_high": 0.985,
+    "holdout_planted": 36,
+    "holdout_caught": 36,
+    "flags_cascade": 669,
+    "flags_cross": 51,
+    "flags_unexplained": 0
+   },
+   {
+    "rule": "E07",
+    "planted": 75,
+    "caught": 75,
+    "recall": 1.0,
+    "interval_low": 0.951,
+    "interval_high": 1.0,
+    "holdout_planted": 25,
+    "holdout_caught": 24,
+    "flags_cascade": 198,
+    "flags_cross": 0,
+    "flags_unexplained": 0
+   },
+   {
+    "rule": "E08",
+    "planted": 114,
+    "caught": 114,
+    "recall": 1.0,
+    "interval_low": 0.967,
+    "interval_high": 1.0,
+    "holdout_planted": 38,
+    "holdout_caught": 38,
+    "flags_cascade": 0,
+    "flags_cross": 0,
+    "flags_unexplained": 0
+   },
+   {
+    "rule": "E09",
+    "planted": 76,
+    "caught": 76,
+    "recall": 1.0,
+    "interval_low": 0.952,
+    "interval_high": 1.0,
+    "holdout_planted": 25,
+    "holdout_caught": 25,
+    "flags_cascade": 0,
+    "flags_cross": 0,
+    "flags_unexplained": 0
+   },
+   {
+    "rule": "E11",
+    "planted": 68,
+    "caught": 67,
+    "recall": 0.985,
+    "interval_low": 0.921,
+    "interval_high": 0.997,
+    "holdout_planted": 34,
+    "holdout_caught": 33,
+    "flags_cascade": 36,
+    "flags_cross": 2,
+    "flags_unexplained": 0
+   },
+   {
+    "rule": "E12",
+    "planted": 75,
+    "caught": 75,
+    "recall": 1.0,
+    "interval_low": 0.951,
+    "interval_high": 1.0,
+    "holdout_planted": 25,
+    "holdout_caught": 25,
+    "flags_cascade": 0,
+    "flags_cross": 0,
+    "flags_unexplained": 0
+   }
+  ],
+  "label": "These numbers measure our checks on synthetic data with known planted errors. They are not results from a client."
+ }
+}

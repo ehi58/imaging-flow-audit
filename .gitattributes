@@ -1,0 +1,8 @@
+# Line endings are part of the data here. HL7 v2 segments end in a carriage
+# return (0x0D) and a converted file is a corrupt message, so nothing under
+# data/ or any .hl7 file is ever converted.
+*            text=auto eol=lf
+*.hl7        -text
+*.dcm        binary
+*.png        binary
+data/**      -text

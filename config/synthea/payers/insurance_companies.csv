@@ -1,0 +1,6 @@
+Id,Name,Address,City,State Headquarterd,Zip,Phone,States Covered,Ownership
+10000,Medicare,1 Program Plaza,Capital City,NJ,07000,555-010-0001,*,Government
+20000,Medicaid,1 Program Plaza,Capital City,NJ,07000,555-010-0002,*,Government
+30000,Dual Eligible,1 Program Plaza,Capital City,NJ,07000,555-010-0003,*,Government
+40000,Commercial Plan A,2 Carrier Court,Capital City,NJ,07000,555-010-0004,*,Private
+50000,Commercial Plan B,3 Carrier Court,Capital City,NJ,07000,555-010-0005,*,Private

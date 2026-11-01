@@ -1,0 +1,14 @@
+cpt,description,body_part_examined,sided,views,modality,weight
+71045,Radiologic examination chest single view,CHEST,0,1,DX,30
+71046,Radiologic examination chest 2 views,CHEST,0,2,DX,25
+74018,Radiologic examination abdomen 1 view,ABDOMEN,0,1,DX,8
+73562,Radiologic examination knee 3 views,KNEE,1,3,DX,6
+73560,Radiologic examination knee 1 or 2 views,KNEE,1,2,DX,6
+73030,Radiologic examination shoulder minimum 2 views,SHOULDER,1,2,DX,6
+73110,Radiologic examination wrist minimum 3 views,WRIST,1,3,DX,5
+73130,Radiologic examination hand minimum 3 views,HAND,1,3,DX,5
+73610,Radiologic examination ankle minimum 3 views,ANKLE,1,3,DX,5
+73630,Radiologic examination foot minimum 3 views,FOOT,1,3,DX,5
+73502,Radiologic examination hip unilateral 2-3 views,HIP,1,2,DX,4
+72100,Radiologic examination spine lumbosacral 2 or 3 views,LSPINE,0,2,DX,3
+72070,Radiologic examination spine thoracic 2 views,TSPINE,0,2,DX,2

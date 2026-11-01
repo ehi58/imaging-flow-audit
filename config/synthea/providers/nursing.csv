@@ -1,0 +1,13 @@
+provider_num,npi,name,address,city,state,zip,fips_county,lat,lon,phone,provider_type_code,category,emergency,upin,pin,region_code,bed_count,clia_lab_number
+F01,2116000342,Riverbend Care Center,100 Riverbend Road,Millbrook,NJ,07001,,40.7420,-74.2100,555-020-0001,00-18,,false,,,,120,
+F02,2522787128,Hollow Oak Nursing and Rehabilitation,22 Hollow Oak Lane,Fairhaven,NJ,07002,,40.7650,-74.2300,555-020-0002,00-18,,false,,,,90,
+F03,2905076172,Stonegate Manor,8 Stonegate Drive,Westfall,NJ,07003,,40.6520,-74.3000,555-020-0003,00-18,,false,,,,80,
+F04,2021532454,Lakeview Senior Health Center,450 Lakeview Avenue,Clearwater Falls,NJ,07004,,40.7300,-74.0600,555-020-0004,00-18,,false,,,,150,
+F05,2023645379,Maple Court Nursing Home,17 Maple Court,Northgate,NJ,07005,,40.8900,-74.0400,555-020-0005,00-18,,false,,,,60,
+F06,2680907724,Harbor Light Care Home,3 Harbor Light Way,Port Ellis,NJ,07006,,40.7200,-74.0400,555-020-0006,00-18,,false,,,,70,
+F07,2572771626,Cedar Hollow Rehabilitation Center,61 Cedar Hollow Road,Brookside,NJ,07007,,40.8300,-74.4700,555-020-0007,00-18,,false,,,,110,
+F08,2877901282,Willow Park Skilled Nursing,9 Willow Park Place,Southmere,NJ,07008,,40.6300,-74.3200,555-020-0008,00-18,,false,,,,95,
+F09,2297377238,Greenfield Manor,120 Greenfield Street,Eastbrook,NJ,07009,,40.9200,-74.1600,555-020-0009,00-18,,false,,,,65,
+F10,2802468654,Summit Ridge Care Center,75 Summit Ridge Road,Highcrest,NJ,07010,,40.8700,-74.5000,555-020-0010,00-18,,false,,,,130,
+F11,2012445096,Birchwood Nursing and Rehabilitation,14 Birchwood Terrace,Lowell Park,NJ,07011,,40.9300,-74.0800,555-020-0011,00-18,,false,,,,100,
+F12,2455762064,Quarry Hill Senior Care,200 Quarry Hill Road,Stonebridge,NJ,07012,,40.9400,-74.2000,555-020-0012,00-18,,false,,,,75,

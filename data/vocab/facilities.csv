@@ -1,0 +1,13 @@
+facility_id,name,npi,pos,street,city,state,zip,county
+F01,Riverbend Care Center,2116000342,31,100 Riverbend Road,Millbrook,NJ,07001,Essex
+F02,Hollow Oak Nursing and Rehabilitation,2522787128,31,22 Hollow Oak Lane,Fairhaven,NJ,07002,Essex
+F03,Stonegate Manor,2905076172,32,8 Stonegate Drive,Westfall,NJ,07003,Union
+F04,Lakeview Senior Health Center,2021532454,31,450 Lakeview Avenue,Clearwater Falls,NJ,07004,Hudson
+F05,Maple Court Nursing Home,2023645379,32,17 Maple Court,Northgate,NJ,07005,Bergen
+F06,Harbor Light Care Home,2680907724,31,3 Harbor Light Way,Port Ellis,NJ,07006,Hudson
+F07,Cedar Hollow Rehabilitation Center,2572771626,31,61 Cedar Hollow Road,Brookside,NJ,07007,Morris
+F08,Willow Park Skilled Nursing,2877901282,31,9 Willow Park Place,Southmere,NJ,07008,Union
+F09,Greenfield Manor,2297377238,32,120 Greenfield Street,Eastbrook,NJ,07009,Passaic
+F10,Summit Ridge Care Center,2802468654,31,75 Summit Ridge Road,Highcrest,NJ,07010,Morris
+F11,Birchwood Nursing and Rehabilitation,2012445096,31,14 Birchwood Terrace,Lowell Park,NJ,07011,Bergen
+F12,Quarry Hill Senior Care,2455762064,32,200 Quarry Hill Road,Stonebridge,NJ,07012,Passaic

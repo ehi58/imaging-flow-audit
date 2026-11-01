@@ -1,0 +1,7 @@
+imaging_flow_audit:
+  target: local
+  outputs:
+    local:
+      type: duckdb
+      path: "{{ env_var('IFA_DUCKDB', 'reports/audit.duckdb') }}"
+      threads: 1

@@ -1,0 +1,7 @@
+payer_id,name,plan_type,member_id_prefix,member_id_digits
+MCR,Medicare Fee-for-Service,MEDICARE_FFS,MFS,9
+MAA,Medicare Advantage Plan A,MEDICARE_ADVANTAGE,MAA,8
+MAB,Medicare Advantage Plan B,MEDICARE_ADVANTAGE,MAB,8
+MCD,State Medicaid,MEDICAID,MCD,10
+CPA,Commercial Plan A,COMMERCIAL,CPA,9
+CPB,Commercial Plan B,COMMERCIAL,CPB,7

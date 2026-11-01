@@ -1,0 +1,23 @@
+version: 2
+
+sources:
+  - name: warehouse
+    description: The extract step's CSV tables (docs/data-dictionary.md), read in place.
+    schema: main
+    meta:
+      external_location: "read_csv('{{ env_var('IFA_WAREHOUSE') }}/{name}.csv', header=true, all_varchar=true)"
+    tables:
+      - name: patients
+      - name: coverage
+      - name: orders
+      - name: dispatch
+      - name: trips
+      - name: dicom_instances
+      - name: reports
+      - name: fhir_imagingstudy
+      - name: fhir_diagnosticreport
+      - name: claim_lines
+      - name: providers
+      - name: vocab_payers
+      - name: vocab_procedures
+      - name: vocab_body_part_terms

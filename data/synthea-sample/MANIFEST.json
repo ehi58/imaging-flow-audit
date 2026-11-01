@@ -1,0 +1,17 @@
+{
+  "synthea_version": "v4.0.0",
+  "jar_sha256": "ed43c20ad40ba5c3bc724503a5af032715fe3c491620b766148e7c2361e6ecc1",
+  "population": 2000,
+  "seed": 20261101,
+  "age_range": "65-100",
+  "state": "New Jersey",
+  "properties": "config/synthea/synthea.properties",
+  "living_residents": 2000,
+  "coverage_from": "2024-01-01",
+  "coverage_rows": 7727,
+  "sha256": {
+    "patients.csv": "8b09c14c228edffb2f610ddbaede549a7b21e22e1548e8f0741d564dfa6f9a0a",
+    "payer_transitions.csv": "fb9fc4dcafb4a3f4db52ef8d759dc7edef62d5e8bc15996735ca2e3bc00b752a",
+    "payers.csv": "93b49f68d36d9a280907d4195a3c5d633228e6add8c03ae45e9d381a84eb2348"
+  }
+}

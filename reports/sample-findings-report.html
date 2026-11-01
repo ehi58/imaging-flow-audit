@@ -1,0 +1,29 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Sample findings report (SYNTHETIC)</title>
+<style>
+ body { font-family: Georgia, 'Times New Roman', serif; margin: 2.2cm; color: #1a1a1a; line-height: 1.45; }
+ h1, h2 { font-family: Arial, Helvetica, sans-serif; }
+ .banner { border: 2px solid #1a1a1a; padding: .5em .8em; font-family: Arial, Helvetica, sans-serif; font-weight: bold; letter-spacing: .04em; margin-bottom: 1.4em; }
+ table { border-collapse: collapse; width: 100%; font-size: 11pt; }
+ th, td { border: 1px solid #999; padding: .35em .5em; vertical-align: top; text-align: left; }
+ th { background: #eee; font-family: Arial, Helvetica, sans-serif; }
+ .small { font-size: 10pt; color: #444; }
+ @page { margin: 1.6cm; }
+</style></head><body>
+<div class="banner">SYNTHETIC — a sample report built from generated data with planted errors. No real provider, patient or claim appears here.</div>
+<h1>Sample findings report</h1>
+<p class="small">Scope: a synthetic portable x-ray provider, 24 months (2024-10-01 to 2026-10-31), 2,000 residents, 10,108 performed exams, 30,349 claim lines, 1,128 planted errors. Seed 20261101. Produced by the public repository's <code>run_all.py</code>.</p>
+
+<h2>What was checked and what was found (SYNTHETIC)</h2>
+<p>Each row is one check. "Flagged" is how many records the check flagged; "caught of planted" is how many of the errors deliberately planted in the data the check found. On real data the second column does not exist: it is the point of the synthetic run.</p>
+<table>
+<thead><tr><th>Check</th><th>Finding</th><th>Flagged</th><th>Caught of planted</th><th>The fix</th></tr></thead>
+<tbody><tr><td><b>E01</b></td><td>Accession number on the image differs from the order</td><td>153</td><td>114 of 114</td><td>Correct the header at the modality or re-associate the study in the PACS; add an accession check to the modality worklist step.</td></tr><tr><td><b>E02</b></td><td>Laterality in the image header disagrees with the order</td><td>44</td><td>30 of 30</td><td>Technologist confirms side at acquisition against the worklist; the LT/RT modifier on the claim follows the order, not the header.</td></tr><tr><td><b>E03</b></td><td>Body part missing or not a defined term</td><td>99</td><td>75 of 75</td><td>Map the protocol to a defined BodyPartExamined term at the modality; reject studies with an empty tag at import.</td></tr><tr><td><b>E04</b></td><td>Image with no order</td><td>79</td><td>59 of 60</td><td>Hold the claim until an order exists; review the stop&#x27;s dispatch log for an unrecorded exam.</td></tr><tr><td><b>E05</b></td><td>Member ID does not fit the payer&#x27;s scheme or belongs to another resident</td><td>1218</td><td>45 of 45</td><td>Re-verify eligibility against the payer before the claim goes out; correct the registration record.</td></tr><tr><td><b>E06</b></td><td>Coverage not in force on the date of service</td><td>859</td><td>103 of 107</td><td>Run eligibility on the date of service; rebill to the payer in force, or to the resident, within timely filing.</td></tr><tr><td><b>E07</b></td><td>Claim sent to the wrong payer</td><td>297</td><td>75 of 75</td><td>Bill the primary payer in force on the date of service; for dual-eligibles, Medicare before Medicaid.</td></tr><tr><td><b>E08</b></td><td>Ordering NPI missing or invalid</td><td>152</td><td>114 of 114</td><td>Capture the orderer&#x27;s individual NPI on every order; reject an order whose NPI fails the check digit or is an organization.</td></tr><tr><td><b>E09</b></td><td>Report late, before the exam, or missing</td><td>101</td><td>76 of 76</td><td>Route unread exams daily; no claim before a final report exists.</td></tr><tr><td><b>E11</b></td><td>Views billed differ from views taken</td><td>138</td><td>67 of 68</td><td>Code the exam from the study&#x27;s instance count and the order, not from the schedule.</td></tr><tr><td><b>E12</b></td><td>Transport line disagrees with the stop</td><td>100</td><td>75 of 75</td><td>Bill transport from the dispatch log: one patient means R0070, more means R0075 with the count modifier; no transport on a day with no exam.</td></tr></tbody>
+</table>
+
+<h2>What could not be checked (SYNTHETIC)</h2>
+<ul><li>Part B claims during a Part A nursing-facility stay: the stay dates are carried in the data, but the code-level rule is not encoded until it is confirmed against CMS&#x27;s consolidated billing update.</li><li>FHIR validation against a server: the resources are built and shape-checked against the R4B models, but no FHIR server validated them in this milestone.</li><li>Image content: the review reads headers only. Nothing judges an image.</li><li>Payment amounts: the charges are a flat synthetic schedule, so no underpayment check runs here.</li></ul>
+
+<h2>How to read a real report</h2>
+<p>A real findings report lists each issue, the claims affected, the dollars at risk and the fix, and it says what could not be checked. The dollars column is absent here because the synthetic charges are a flat schedule and the point of this document is the method, not an amount.</p>
+<p class="small">SYNTHETIC. Generated from the public repository's reports/run-summary.json. Nothing in this document is a result from a client.</p>
+</body></html>

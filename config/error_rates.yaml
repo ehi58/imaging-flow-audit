@@ -1,0 +1,70 @@
+# Planted error rates for src/flow/inject_errors.py. Rates are per eligible
+# record at the hop named in docs/error-catalog.md. Variants are drawn with
+# equal weight. The hold-out variant of each type was written after the audit
+# rules were frozen and is scored separately.
+#
+# Planning figures from the 17 Oct plan: with about 10,000 exams, each type
+# lands 80 to 150 planted cases. The realised counts are written to
+# truth/planted_errors.csv and reports/recall.md on every run.
+seed_default: 20261101
+scale:
+  residents: 2000
+  months: 24
+sla:
+  report_turnaround_hours: 24
+errors:
+  E01:
+    rate: 0.015
+    hop: image
+    variants: [transposed_digits, prefix_dropped, other_same_day_accession]
+    holdout: leading_zero_dropped
+  E02:
+    rate: 0.010
+    hop: image
+    variants: [lr_swapped, image_laterality_blank, bilateral_on_single]
+    holdout: laterality_tag_only_wrong
+  E03:
+    rate: 0.010
+    hop: image
+    variants: [tag_absent, tag_empty, undefined_term]
+    holdout: lowercase_term
+  E04:
+    rate: 0.008
+    hop: image
+    variants: [never_ordered_accession, blank_accession, mrn_without_orders]
+    holdout: cancelled_order_accession
+  E05:
+    rate: 0.010
+    hop: registration
+    variants: [wrong_payer_prefix, failed_check_digit, other_members_id]
+    holdout: truncated_id
+  E06:
+    rate: 0.015
+    hop: registration
+    variants: [after_coverage_end, before_coverage_start, end_day_before_service]
+    holdout: gap_between_periods
+  E07:
+    rate: 0.010
+    hop: claim
+    variants: [ffs_billed_while_ma, medicaid_primary_for_dual, prior_payer_after_switch]
+    holdout: secondary_billed_as_primary
+  E08:
+    rate: 0.015
+    hop: order
+    variants: [blank, failed_check_digit, organization_npi]
+    holdout: unregistered_valid_npi
+  E09:
+    rate: 0.010
+    hop: report
+    variants: [beyond_sla, report_before_exam, no_report]
+    holdout: report_at_sla_plus_one_minute
+  E11:
+    rate: 0.010
+    hop: claim
+    variants: [two_view_billed_one_image, single_view_billed_two_images]
+    holdout: three_views_billed_two_images
+  E12:
+    rate: 0.010
+    hop: claim
+    variants: [r0075_single_patient, r0070_multi_patient, transport_without_exam]
+    holdout: modifier_count_mismatch

@@ -1,0 +1,25 @@
+# environments and caches
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+
+# regenerated outputs (the committed sample lives in data/samples/ and data/synthea-sample/)
+data/generated/
+truth/*.csv
+!truth/README.md
+reports/*.duckdb
+reports/*.duckdb.wal
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+logs/
+
+# external downloads (the Synthea jar and its raw output)
+downloads/
+synthea/output/
+dbt/package-lock.yml
+dbt/.user.yml

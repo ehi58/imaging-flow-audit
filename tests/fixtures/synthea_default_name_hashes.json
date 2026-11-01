@@ -1,0 +1,12 @@
+{
+  "note": "sha256 of lower-cased Synthea default private insurer names plus one sentinel; the names themselves are not stored",
+  "sha256_lower": [
+    "179e8bf00d58bde2a7b0558bcb64bc71d706349314e2bca4c5b7531c66136ca9",
+    "20cd0cd5561b7df589741b649547fb853436f3b02e243e53eddca0eae5621336",
+    "5e06e8549549caab5452db917c2abbaa80895d4f330d77f63eff603982de1654",
+    "635c9d771ebf49b4435dced38e7b0f6eff1b6b8b57e6040f7350572c0ecc8e35",
+    "84fe8902866796805003e6d8c32cce4bd7acce9ee82696e64e51f266d89c6cf0",
+    "93babfec2f0c9778de88e6d0a303448a194353c425497bab45f7ba0a0dbe842d",
+    "f66f87d87754f4a79fe54376bd0c491aa050dcf491374b2ea10cd1172e8cbe84"
+  ]
+}

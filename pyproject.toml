@@ -1,0 +1,11 @@
+[project]
+name = "imaging-flow-audit"
+version = "0.1.0"
+description = "Synthetic imaging data flow with planted errors and audit rules scored by recall per error type."
+requires-python = ">=3.12,<3.13"
+license = { text = "MIT" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra"

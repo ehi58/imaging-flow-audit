@@ -1,0 +1,24 @@
+name: imaging_flow_audit
+version: "0.1.0"
+profile: imaging_flow_audit
+model-paths: ["models"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+target-path: target
+clean-targets: [target, dbt_packages]
+
+vars:
+  sla_hours: 24
+
+models:
+  imaging_flow_audit:
+    +materialized: view
+    intermediate:
+      +materialized: table
+
+# Every audit rule runs and keeps the rows it flags. A rule is a finding, not a
+# build failure, so severity is warn; the scorer reads the stored failures.
+data_tests:
+  imaging_flow_audit:
+    +store_failures: true
+    +severity: warn

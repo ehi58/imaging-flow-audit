@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  audit:
+    name: pytest + dbt (ubuntu-latest, python 3.12)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - name: HAPI HL7v2 validator (pinned jars, SHA-256 checked, compiled)
+        run: |
+          set -o pipefail
+          bash tools/hl7-validate/fetch_hapi.sh
+      - name: Install pinned requirements
+        run: |
+          set -o pipefail
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Tool versions
+        run: |
+          set -o pipefail
+          python --version
+          java -version
+          pytest --version
+          dbt --version
+      # The publish scan proves it catches a REAL NPI without one being committed:
+      # tests/test_publish_scan.py reads one from the registry API at test time
+      # (or from NPPES_FILE when scripts/fetch_nppes_weekly.py could fetch the
+      # weekly file; CMS's download site was down on 2026-11-01). In CI the
+      # control must run; it fails, never skips, when the registry is unreachable.
+      - name: Tests
+        run: |
+          set -o pipefail
+          pytest -q
+      # The whole audit, end to end, at a three-month scale: generate the clean
+      # and the injected runs, validate every HL7 file with HAPI, extract, dbt
+      # build, score. The 24-month report committed under reports/ comes from a
+      # local run of the same command with --months 24.
+      - name: End-to-end audit (3 months)
+        run: |
+          set -o pipefail
+          python run_all.py --months 3
+      - uses: actions/upload-artifact@v4
+        with:
+          name: audit-reports
+          path: |
+            reports/recall.md
+            reports/clean-baseline.md
+            reports/run-summary.json

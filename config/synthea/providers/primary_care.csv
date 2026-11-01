@@ -1,0 +1,4 @@
+provider_num,npi,name,address,city,state,zip,fips_county,lat,lon,phone,provider_type_code,category,emergency,upin,pin,region_code,bed_count,clia_lab_number
+P01,2782194452,Millbrook Family Practice,12 Main Street,Millbrook,NJ,07001,,40.7400,-74.2080,555-040-0001,,,false,,,,,
+P02,2179292901,Highcrest Medical Group,40 Ridge Road,Highcrest,NJ,07010,,40.8680,-74.4980,555-040-0002,,,false,,,,,
+P03,2652098874,Port Ellis Community Clinic,7 Harbor Street,Port Ellis,NJ,07006,,40.7180,-74.0420,555-040-0003,,,false,,,,,
