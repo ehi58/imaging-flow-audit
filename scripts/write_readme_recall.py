@@ -41,6 +41,12 @@ def main() -> None:
     clean_total = sum(summary["clean"]["flags"].values())
     unexplained = sum(r["flags_unexplained"] for r in summary["recall"].values())
     misses = holdout_misses(recall_md)
+    # The table's "planted" column counts core variants only; the hold-out plants
+    # are the difference from the planted total above it. Both sums come from the
+    # same run summary the table is built from (EE, 2026-11-08).
+    core_planted = sum(r["planted"] for r in summary["recall"].values())
+    holdout_planted = sum(r["holdout_planted"] for r in summary["recall"].values())
+    assert core_planted + holdout_planted == inj["planted"], (core_planted, holdout_planted, inj["planted"])
     miss_lines = "\n".join(
         f"- **{rule} `{variant}`** (hold-out): {caught} of {planted} caught. The rule does not see this way of making the error; "
         f"that is what the hold-out is for, and it stays in the table rather than being fixed into the rule after the fact."
@@ -53,6 +59,8 @@ Measured on seed {summary['seed']}, {summary['months']} months ({summary['window
 **These numbers measure the rules on synthetic data with known planted errors. They are not results from any client.**
 
 {per_rule_table(recall_md)}
+
+The planted column counts core variants only, {core_planted:,} in all; with the {holdout_planted:,} hold-out plants, the total is {inj['planted']:,}.
 
 Recall is caught ÷ planted over the core variants of each rule, with a 95% Wilson interval. Hold-out variants
 were written after the rules were frozen and are scored apart. A **cascade flag** is on a record the plant was

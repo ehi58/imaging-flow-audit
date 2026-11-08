@@ -53,6 +53,8 @@ Measured on seed 20261101, 24 months (2024-10-01 to 2026-10-31):
 | E11 | 68 | 67 | 0.99 | 0.92 to 1.00 | 34 | 33 | 36 | 2 | 0 |
 | E12 | 75 | 75 | 1.00 | 0.95 to 1.00 | 25 | 25 | 0 | 0 | 0 |
 
+The planted column counts core variants only, 839 in all; with the 289 hold-out plants, the total is 1,128.
+
 Recall is caught ÷ planted over the core variants of each rule, with a 95% Wilson interval. Hold-out variants
 were written after the rules were frozen and are scored apart. A **cascade flag** is on a record the plant was
 expected to reach without being the planted record (the patient's other claim lines after a coverage or member-ID
