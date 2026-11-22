@@ -44,3 +44,75 @@ def test_each_message_form_has_a_sample_and_a_version_note():
 def test_the_notes_say_why_each_field_matters():
     text = field_notes.render()
     assert "E01" in text and "E08" in text and "42 CFR 486.106" in text
+
+
+# ---- sample member IDs ------------------------------------------------------
+#
+# The public samples carried MAA12345676 and CPA123456781 until 2026-11-22: both
+# fail the check digit this project's own audit applies (ids.is_valid_member_id),
+# so the study notes showed, as the clean example, a member ID the audit would
+# flag. Nothing checked them because they are typed by hand, not generated.
+
+def _schemes():
+    from flow import ids
+    from flow.vocab import load as load_vocab
+
+    return {p.payer_id: ids.MemberIdScheme(p.member_id_prefix, p.member_id_digits) for p in load_vocab().payers}
+
+
+def _in1_member_ids(er7: str):
+    """(payer id, member id) for every IN1 segment: IN1-3 and IN1-36."""
+    out = []
+    for seg in re.split(r"[\r\n]+", er7):
+        f = seg.split("|")
+        if f[0] == "IN1":
+            out.append((f[3], f[36]))
+    return out
+
+
+def test_every_sample_member_id_passes_the_check_digit():
+    from flow import ids
+
+    schemes = _schemes()
+    seen = []
+
+    # 1. The coverage rows the samples are built from.
+    for cov in field_notes.COVERAGE:
+        seen.append(("field_notes.COVERAGE", cov.payer_id, cov.member_id))
+
+    # 2. Every committed sample message, as shipped.
+    sample_files = sorted((ROOT / "data" / "samples").glob("*.hl7"))
+    assert len(sample_files) == 6, sample_files
+    for path in sample_files:
+        for payer_id, member_id in _in1_member_ids(path.read_bytes().decode("utf-8")):
+            seen.append((path.name, payer_id, member_id))
+
+    # 3. The samples embedded in the committed study notes.
+    for payer_id, member_id in _in1_member_ids(DOC.read_text(encoding="utf-8")):
+        seen.append((DOC.name, payer_id, member_id))
+
+    # 4. The coverage rows the message tests use.
+    from tests import test_hl7_messages
+
+    for cov in test_hl7_messages.COVERAGE:
+        seen.append(("tests/test_hl7_messages.py", cov.payer_id, cov.member_id))
+
+    # A scan that found nothing would pass every assertion below: the two ADT
+    # samples and the two ADT blocks in the notes carry two IN1 segments each.
+    sources = {s for s, _, _ in seen}
+    assert {"field_notes.COVERAGE", "adt_a04_v2.8.hl7", "adt_a04_v2.5.1.hl7", DOC.name, "tests/test_hl7_messages.py"} <= sources, sources
+    assert len(seen) >= 12, seen
+
+    bad = [(s, p, m) for s, p, m in seen if p not in schemes or not ids.is_valid_member_id(m, schemes[p])]
+    assert not bad, f"sample member IDs that fail the check digit: {bad}"
+
+
+def test_the_check_rejects_the_ids_the_samples_used_to_carry():
+    """The control for the test above: the two retired values really do fail."""
+    from flow import ids
+
+    schemes = _schemes()
+    assert not ids.is_valid_member_id("MAA12345676", schemes["MAA"])
+    assert not ids.is_valid_member_id("CPA123456781", schemes["CPA"])
+    assert ids.is_valid_member_id("MAA12345674", schemes["MAA"])
+    assert ids.is_valid_member_id("CPA123456782", schemes["CPA"])

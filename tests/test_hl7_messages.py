@@ -21,7 +21,7 @@ HAVE_HAPI = validate_hl7.hapi_available()
 PATIENT = Patient("MRN1000001", "syn-1", "ASHFORD", "AVERY", date(1942, 3, 5), "F", "F01", date(2024, 1, 15))
 COVERAGE = [
     Coverage("COV0000001", "MRN1000001", "MCR", "MFS123456782", 1, date(2024, 11, 1), date(2025, 10, 31)),
-    Coverage("COV0000002", "MRN1000001", "CPA", "CPA123456781", 2, date(2024, 11, 1), date(2025, 10, 31)),
+    Coverage("COV0000002", "MRN1000001", "CPA", "CPA123456782", 2, date(2024, 11, 1), date(2025, 10, 31)),
 ]
 ORDER = hm.OrderFacts(
     placer_order_number="PLC0000001",
@@ -72,7 +72,7 @@ def test_adt_a04_v28_places_the_registration_fields_where_the_standard_says():
     assert in1[1] == "1" and in1[2].startswith("MCR^") and in1[12] == "20241101" and in1[13] == "20251031"
     assert in1[22] == "1" and in1[36] == "MFS123456782"
     in1b = fields(segment(msg, "IN1", 1))
-    assert in1b[1] == "2" and in1b[22] == "2" and in1b[36] == "CPA123456781"
+    assert in1b[1] == "2" and in1b[22] == "2" and in1b[36] == "CPA123456782"
 
 
 def test_adt_a04_v251_keeps_evn_1_and_the_same_positions_elsewhere():

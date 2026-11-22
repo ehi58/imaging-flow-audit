@@ -31,7 +31,7 @@
  "samples": {
   "adt": {
    "title": "ADT^A04 (v2.8, structure ADT_A01)",
-   "er7": "MSH|^~\\&|RIS|HARBORLINE|PACS|HARBORLINE|20250304081600||ADT^A04^ADT_A01|ADT0000001|P|2.8\nEVN||20250304081600\nPID|1||MRN1000001^^^HARBORLINE^MR||ASHFORD^AVERY||19420305|F\nPV1|1|O|F01^^^HARBORLINE|||||||||||||||||||||||||||||||||||||||||20240115100000\nIN1|1|MAA^Medicare Advantage Plan A^L|MAA|Medicare Advantage Plan A||||||||20241101|20251031||MEDICARE_ADVANTAGE||SEL|||||1||||||||||||||MAA12345676\nIN1|2|CPA^Commercial Plan A^L|CPA|Commercial Plan A||||||||20241101|20251031||COMMERCIAL||SEL|||||2||||||||||||||CPA123456781",
+   "er7": "MSH|^~\\&|RIS|HARBORLINE|PACS|HARBORLINE|20250304081600||ADT^A04^ADT_A01|ADT0000001|P|2.8\nEVN||20250304081600\nPID|1||MRN1000001^^^HARBORLINE^MR||ASHFORD^AVERY||19420305|F\nPV1|1|O|F01^^^HARBORLINE|||||||||||||||||||||||||||||||||||||||||20240115100000\nIN1|1|MAA^Medicare Advantage Plan A^L|MAA|Medicare Advantage Plan A||||||||20241101|20251031||MEDICARE_ADVANTAGE||SEL|||||1||||||||||||||MAA12345674\nIN1|2|CPA^Commercial Plan A^L|CPA|Commercial Plan A||||||||20241101|20251031||COMMERCIAL||SEL|||||2||||||||||||||CPA123456782",
    "highlights": [
     {
      "field": "PID-3",
