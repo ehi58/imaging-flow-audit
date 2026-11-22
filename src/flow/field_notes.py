@@ -18,8 +18,8 @@ from flow.vocab import load as load_vocab
 # One fictitious resident, two coverage rows, one knee order and its report.
 PATIENT = Patient("MRN1000001", "synthetic-1", "ASHFORD", "AVERY", date(1942, 3, 5), "F", "F01", date(2024, 1, 15))
 COVERAGE = [
-    Coverage("COV0000001", "MRN1000001", "MAA", "MAA12345676", 1, date(2024, 11, 1), date(2025, 10, 31)),
-    Coverage("COV0000002", "MRN1000001", "CPA", "CPA123456781", 2, date(2024, 11, 1), date(2025, 10, 31)),
+    Coverage("COV0000001", "MRN1000001", "MAA", "MAA12345674", 1, date(2024, 11, 1), date(2025, 10, 31)),
+    Coverage("COV0000002", "MRN1000001", "CPA", "CPA123456782", 2, date(2024, 11, 1), date(2025, 10, 31)),
 ]
 ORDER = hm.OrderFacts(
     placer_order_number="PLC0000001", filler_order_number="FIL0000001", accession="ACC00000001",
