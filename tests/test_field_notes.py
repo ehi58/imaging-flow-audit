@@ -92,7 +92,13 @@ def test_every_sample_member_id_passes_the_check_digit():
         seen.append((DOC.name, payer_id, member_id))
 
     # 4. The coverage rows the message tests use.
-    from tests import test_hl7_messages
+    # Loaded by path: tests/ is not a package, so `from tests import ...` only
+    # resolves when pytest happens to be started as `python -m pytest`.
+    import importlib.util
+
+    spec = importlib.util.spec_from_file_location("_hl7_message_fixtures", ROOT / "tests" / "test_hl7_messages.py")
+    test_hl7_messages = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(test_hl7_messages)
 
     for cov in test_hl7_messages.COVERAGE:
         seen.append(("tests/test_hl7_messages.py", cov.payer_id, cov.member_id))
